@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="nl">
+  <head>
+    <meta charset="UTF-8" />
+    <title>VRCafe To-do</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- Correct pad naar je CSS -->
+    <link rel="stylesheet" href="/style.css" />
+  </head>
+
+  <body>
+    <div class="app">
+      <header class="app-header">
+        <div class="logo-row">
+          <!-- Correct pad naar je logo.png in /public/img/ -->
+          <img src="/img/logo.png" alt="VRCafe Logo" class="logo" />
+          <span class="logo-text">CAFE</span>
+        </div>
+        <h1>JOUW TAKEN</h1>
+        <p class="subtitle">VRCafe-stijl</p>
+      </header>
+
+      <!-- Categorie kaarten + progress -->
+      <section class="category-stats" aria-label="Voortgang per categorie">
+        <article class="category-card category-card--work" data-category="work">
+          <h2>Werk</h2>
+          <div class="progress-circle">
+            <span class="progress-text" id="progress-work">0/0</span>
+          </div>
+        </article>
+
+        <article
+          class="category-card category-card--personal"
+          data-category="personal"
+        >
+          <h2>Persoonlijk</h2>
+          <div class="progress-circle">
+            <span class="progress-text" id="progress-personal">0/0</span>
+          </div>
+        </article>
+
+        <article class="category-card category-card--free" data-category="free">
+          <h2>Vrije tijd</h2>
+          <div class="progress-circle">
+            <span class="progress-text" id="progress-free">0/0</span>
+          </div>
+        </article>
+      </section>
+
+      <!-- Nieuwe taak -->
+      <section class="add-task" aria-label="Nieuwe taak toevoegen">
+        <h2 class="section-title">Nieuwe taak</h2>
+        <form id="task-form">
+          <label class="sr-only" for="task-title">Taak</label>
+          <input
+            id="task-title"
+            name="title"
+            type="text"
+            placeholder="Wat wil je doen?"
+            required
+          />
+
+          <label class="sr-only" for="task-category">Categorie</label>
+          <select id="task-category" name="category">
+            <option value="work">Werk</option>
+            <option value="personal">Persoonlijk</option>
+            <option value="free">Vrije tijd</option>
+          </select>
+
+          <!-- optioneel datumprikker -->
+          <label class="sr-only" for="task-date">Datum</label>
+          <input id="task-date" name="date" type="date" />
+
+          <button type="submit" class="btn btn-primary">Toevoegen</button>
+        </form>
+      </section>
+
+      <!-- Filters & sortering -->
+      <section class="controls" aria-label="Filter en sorteer taken">
+        <div class="filter-group">
+          <span class="controls-label">Filter:</span>
+          <button type="button" class="chip chip--active" data-filter="all">
+            Alle
+          </button>
+          <button type="button" class="chip" data-filter="active">
+            Onvoltooid
+          </button>
+          <button type="button" class="chip" data-filter="completed">
+            Voltooid
+          </button>
+        </div>
+
+        <div class="sort-group">
+          <label for="sort-select" class="controls-label">Sorteer:</label>
+          <select id="sort-select">
+            <option value="newest">Nieuwste eerst</option>
+            <option value="oldest">Oudste eerst</option>
+            <option value="az">A-Z</option>
+          </select>
+        </div>
+      </section>
+
+      <!-- Takenlijst -->
+      <main class="task-list-container" aria-label="Takenlijst">
+        <ul id="task-list" class="task-list"></ul>
+      </main>
+
+      <footer class="app-footer">
+        <p>&copy; VRCafe Haarlem – To-do demo</p>
+      </footer>
+    </div>
+
+    <!-- Correct pad naar je JS -->
+    <script src="/app.js" defer></script>
+  </body>
+</html>
